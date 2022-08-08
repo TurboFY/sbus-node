@@ -10,6 +10,7 @@ const configCommon: RabbitConfig = {
   host: 'localhost',
   username: 'guest',
   password: 'guest',
+  ssl: false,
   port: 5672,
   prefetchCount: 64,
   defaultCommandRetries: 15,

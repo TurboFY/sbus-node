@@ -75,6 +75,7 @@ export interface RabbitConfig {
   host: string;
   username: string;
   password: string;
+  ssl: boolean;
   port: number;
   prefetchCount: number;
   defaultCommandRetries: number;
@@ -112,6 +113,8 @@ export class RabbitMqTransport {
   private autoinit: boolean;
 
   private useSingletonSubscribe: boolean;
+
+  private ssl: boolean;
 
   private host: string;
 
@@ -154,6 +157,7 @@ export class RabbitMqTransport {
     host: 'localhost',
     username: 'guest',
     password: 'guest',
+    ssl: false,
     port: 5672,
     prefetchCount: 64,
     defaultCommandRetries: 15,
@@ -223,6 +227,7 @@ export class RabbitMqTransport {
     this.port = conf.port;
     this.username = conf.username;
     this.password = conf.password;
+    this.ssl = conf.ssl;
     this.isRunning = false; // running status
     this.isInited = false;
     this.promiseStorage = {}; // promises storage for requests
@@ -260,7 +265,7 @@ export class RabbitMqTransport {
     this.isInited = true;
     this.logger.debug(`Sbus connecting to: ${this.host}`);
     this.connection = await amqp.connect(this.host.split(',')
-      .map((host) => `amqp://${this.username}:${this.password}@${host}:${this.port}`),
+      .map((host) => `${this.ssl ? 'amqps' : 'amqp'}://${this.username}:${this.password}@${host}:${this.port}`),
     {
       reconnectTimeInSeconds: 3,
       heartbeatIntervalInSeconds: 5,
