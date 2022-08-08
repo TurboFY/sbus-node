@@ -1,0 +1,10 @@
+info:
+  name: tests-common
+  version: "1.0"
+  category: tests
+
+include:
+  - file: /etc/serve/include.d/library.yml
+
+build:
+  - node: npm ci && npm run lint && NPM_BUILD_VERSION={{ info.build-version }} npm run release

@@ -18,7 +18,9 @@
     "clean": "rimraf dist",
     "build": "npm run clean && tsc && tsc -p tsconfig.decorators.json",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "npm run build",
+    "release": "npm --no-git-tag-version version ${NPM_BUILD_VERSION} && npm publish"
   },
   "dependencies": {
     "amqp-connection-manager": "^4.1.3",
