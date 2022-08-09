@@ -7,5 +7,6 @@ include:
   - file: /etc/serve/include.d/library.yml
 
 build:
-  - docker-image: node:16
-  - node: npm ci && npm run lint && NPM_BUILD_VERSION={{ info.build-version }} npm run release
+  - node:
+      node: npm ci && npm run lint && NPM_BUILD_VERSION={{ info.build-version }} npm run release
+      image: node:16
