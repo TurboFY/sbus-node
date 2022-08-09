@@ -8,5 +8,5 @@ include:
 
 build:
   - node:
-      node: npm ci && npm run lint && NPM_BUILD_VERSION={{ info.build-version }} npm run release
+      node: npm ci && npm run lint && NPM_BUILD_VERSION={{ info.build-version }} npm run release --registry https://art.turbofy.net
       image: node:16
