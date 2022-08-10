@@ -1,5 +1,5 @@
 {
-  "name": "sbus-node",
+  "name": "@turbofy/sbus-node",
   "version": "1.2.47",
   "description": "Service Bus for nodeJs services with RabbitMQ transport",
   "keywords": [
