@@ -8,5 +8,5 @@ include:
 
 build:
   - node:
-      node: npm ci && npm run lint && NPM_BUILD_VERSION={{ info.build-version }} npm run release --registry https://art.turbofy.net
+      node: npm ci && npm run lint && NPM_BUILD_VERSION={{ info.build-version }} npm run release --registry http://3.20.208.47:4873
       image: node:16
